@@ -1,0 +1,29 @@
+<!--邀请海报 卡片-->
+<view class="hb-card-wrapper">
+  <view class="swiper-wrapper">
+    <swiper class="my-swiper" circular="true"
+      previous-margin="126rpx" next-margin="126rpx"
+      bindchange="myChange" current="{{currentIndex}}">
+      <block wx:for="{{swiperData}}" wx:key="index">
+        <swiper-item>
+          <view class="swiper-item">
+            <view class="con con0 {{currentIndex === index ? 'active':'de-active'}}">
+              <image class="bg" src="{{item.bg}}" onload="imgLoaded"></image>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">
+      <view class="dot {{currentIndex === item.index ? 'active':''}}" wx:for="{{swiperData}}" wx:key="index"></view>
+    </view>
+    <view class="tip">
+      朋友圈发送从本地相册中选择海报
+    </view>
+    <view class="export" bindtap="saveHaibao">保存海报至相册</view>
+  </view>
+  <!-- 不在屏幕视野内的canvas -->
+  <view>
+    <canvas id="c1" type="2d" class="canvas1"></canvas>
+  </view>
+</view>
